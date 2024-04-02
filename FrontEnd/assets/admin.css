@@ -304,8 +304,8 @@ footer nav ul {
   width: 70%;
 }
 
-.modal-footer{
-  margin-top:80px ;
+.modal-footer {
+  margin-top: 80px;
 }
 .modal-footer button {
   cursor: pointer;
@@ -408,7 +408,6 @@ footer nav ul {
   font-size: 0.7rem;
 }
 
-
 .custom-file-upload {
   margin-top: 20px;
   display: inline-block;
@@ -456,11 +455,11 @@ footer nav ul {
   width: 70%;
 }
 
-.modal-footer-2{
+.modal-footer-2 {
   margin-top: 30px;
 }
 
-.disable{
+.disable {
   font-family: "Syne";
   font-weight: 700;
   color: white;

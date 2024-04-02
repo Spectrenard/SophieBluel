@@ -273,17 +273,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateButtonState();
 
-  // Fonction pour vérifier si tous les champs sont remplis
-  function checkFields() {
-    const title = titleInput.value.trim();
-    const category = categorySelect.value;
-    const image = imageInput.files[0];
-
-    return title !== "" && category !== "" && image !== undefined;
-  }
-
   // Fonction pour ajouter un projet
-  function addProject(event) {
+  async function addProject(event) {
     event.preventDefault();
 
     const title = titleInput.value.trim();
@@ -302,31 +293,32 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("category", categoryId);
     formData.append("image", image);
 
-    fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        alert("Projet ajouté avec succès !");
-        // Réinitialiser les champs après l'ajout du projet
-        titleInput.value = "";
-        categorySelect.value = "";
-        imageInput.value = "";
-      })
-      .catch((error) => {
-        console.error("Erreur lors de l'ajout du projet:", error);
-        alert(
-          "Une erreur est survenue lors de l'ajout du projet. Veuillez réessayer."
-        );
+    try {
+      // Envoyer les données du projet à l'API via une requête POST
+      const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error("Échec de l'ajout du projet");
+      }
+
+      const data = await response.json();
+      alert("Projet ajouté avec succès !");
+      // Réinitialiser les champs après l'ajout du projet
+      titleInput.value = "";
+      categorySelect.value = "";
+      imageInput.value = "";
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du projet:", error);
+      alert(
+        "Une erreur est survenue lors de l'ajout du projet. Veuillez réessayer."
+      );
+    }
   }
 
   // Attacher un écouteur d'événement pour le clic sur le bouton "Valider"
