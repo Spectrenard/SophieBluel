@@ -233,6 +233,36 @@ document.addEventListener("DOMContentLoaded", function () {
       reader.readAsDataURL(file);
     }
   });
+  //**************************************$ */
+  // Récuperer les catégories depuis l'API
+  //**************************************$ */
+  fetch("http://localhost:5678/api/categories")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des catégories");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Traitement des données pour les options du select
+      const categories = data.map((category) => ({
+        id: category.id,
+        name: category.name,
+      }));
+
+      // Ajout des options au select
+      const selectCategory = document.getElementById("category-select");
+      categories.forEach((category) => {
+        const option = document.createElement("option");
+        option.value = category.id;
+        option.innerText = category.name;
+        selectCategory.appendChild(option);
+      });
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la récupération des catégories :", error);
+      // Gérer l'erreur (afficher un message à l'utilisateur, par exemple)
+    });
 
   //******************************************************************//
   //******************************************************************//

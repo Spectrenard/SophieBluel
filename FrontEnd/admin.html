@@ -82,37 +82,36 @@
         <div class="modal-precedent"><i class="fa-solid fa-arrow-left"></i></div>
         <div class="modal-close-2"><i class="fa-solid fa-xmark"></i></div>
 
-        <div class="modal-header-2">
-          <h3>Ajout photo</h3>
-        </div>
+          <h3 class="modal-header-2">Ajout photo</h3>
+     
         <div class="modal-body-2">
-          <div class="image">
-            <img src="" alt="" >
-            <i class="fa-regular fa-image"></i> 
-            <label for="image-upload" class="custom-file-upload">
-             + Ajouter une photo
-          </label>
-          <p>jpg, png : 4mo max</p>
-          <input type="file" id="image-upload" accept="image/*">
-          
+
+          <form action="#">
+            <div class="image">
+              <img src="" alt="" >
+              <i class="fa-regular fa-image"></i> 
+              <label for="image-upload" class="custom-file-upload">
+               + Ajouter une photo
+            </label>
+            <p>jpg, png : 4mo max</p>
+            <input type="file" id="image-upload" accept="image/*">
+            
+            </div>
+  
+            <p>Titre</p>
+            <input type="text"  placeholder="Ajouter votre titre" name="titre" id="titre" />
+            <p>Catégorie</p>
+              <select id="category-select">
+                <option value="" disabled selected>Sélectionner la catégorie...</option>
+              </select>
+            </p>
           </div>
-
-          <label for="titre">Titre</label>
-          <input type="text" name="titre" id="titre" />
-          <p>Catégorie</p>
-            <select id="category-select">
-   
-              <option value="objets">Objets</option>
-              <option value="hotels-restaurants">Hôtels & Restaurants</option>
-              <option value="appartements">Appartements</option>
-            </select>
-          </p>
-        </div>
-
-        <div class="modal-footer-2">
-          <button id="valider">Valider</button>
-        </div>
+            <button id="valider">Valider</button>      
+        
+          </form>
+           
       </div>
+         
       <!-- ***************MODALE************* -->
       <section id="portfolio">
         <div class="edit">

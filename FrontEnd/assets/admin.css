@@ -283,6 +283,8 @@ footer nav ul {
 }
 
 .modal-body {
+  overflow: auto;
+  max-height: 400px;
   margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -359,7 +361,7 @@ footer nav ul {
   transform: rotate(180deg);
 }
 
-.modal-header-2 h3 {
+.modal-header-2 {
   font-size: 1.2rem;
   margin-bottom: 30px;
 }
@@ -421,6 +423,7 @@ footer nav ul {
 }
 
 .modal-body-2 input[type="text"] {
+  width: 93%;
   margin-top: 10px;
   height: 50px;
   font-size: 1.2em;
@@ -435,6 +438,7 @@ footer nav ul {
   margin-bottom: 10px;
 }
 .modal-body-2 select {
+  width: 100%;
   height: 50px;
   font-size: 1.2em;
   border: none;
@@ -469,6 +473,7 @@ footer nav ul {
   padding: 10px 0;
   text-align: center;
   border-radius: 60px;
+  margin-top: 60px;
 }
 
 .enable {
@@ -482,6 +487,7 @@ footer nav ul {
   padding: 10px 0;
   text-align: center;
   border-radius: 60px;
+  margin-top: 60px;
 }
 
 /* Icone poubelle */
