@@ -1,5 +1,3 @@
-// Formulaire
-
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("login-form");
 
@@ -28,35 +26,39 @@ document.addEventListener("DOMContentLoaded", function () {
       isValid = false;
     }
 
-    fetch("http://localhost:5678/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "sophie.bluel@test.tld",
-        password: "S0phie",
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Erreur lors de la connexion");
-        }
-        return response.json();
+    if (isValid) {
+      // Vérifier si les champs sont valides avant d'envoyer la requête
+      fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
       })
-      .then((data) => {
-        const token = data.token;
-        const userId = data.userId;
-        alert("Connexion réussie !");
-        localStorage.setItem("token", token);
-        localStorage.setItem("userId", userId);
-        window.location.href = "admin.html";
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la connexion :", error);
-        alert("Échec de la connexion !");
-      });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Erreur lors de la connexion");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const token = data.token;
+          const userId = data.userId;
+          alert("Connexion réussie !");
+          localStorage.setItem("token", token);
+          localStorage.setItem("userId", userId);
+          window.location.href = "admin.html";
+        })
+        .catch((error) => {
+          console.error("Erreur lors de la connexion :", error);
+          alert("Échec de la connexion !");
+        });
+    }
   });
+
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
   }
