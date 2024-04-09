@@ -18,13 +18,20 @@
     <link rel="stylesheet" href="./assets/homepage.css" />
   </head>
   <body>
+    <div class="edition-mode">
+      <i class="fa-regular fa-pen-to-square"></i>
+      <p>Mode édition</p>
+    </div>
     <header>
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
         <ul>
           <li><a href="#projets">projets</a></li>
           <li><a href="#contact">contact</a></li>
-          <li><a href="login.html">login</a></li>
+          <li class="login"><a href="login.html">login</a></li>
+          <li class="logout">
+            logout
+          </li>
           <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
         </ul>
       </nav>
@@ -53,13 +60,66 @@
           </p>
         </article>
       </section>
+            <!-- ***************MODALE************* -->
+            <div class="overlay"></div>
+
+            <div class="modal">
+              <div class="modal-close"><i class="fa-solid fa-xmark"></i></div>
+              <div class="modal-header">
+                <h3>Galerie photo</h3>
+              </div>
+              <div class="modal-body"></div>
+      
+              <div class="modal-footer">
+                <button id="add-photo">Ajouter une photo</button>
+              </div>
+            </div>
+            <div class="modal-2">
+              <div class="modal-precedent"><i class="fa-solid fa-arrow-left"></i></div>
+              <div class="modal-close-2"><i class="fa-solid fa-xmark"></i></div>
+      
+                <h3 class="modal-header-2">Ajout photo</h3>
+           
+              <div class="modal-body-2">
+      
+                <form action="#">
+                  <div class="image">
+                    <img src="" alt="" >
+                    <i class="fa-regular fa-image"></i> 
+                    <label for="image-upload" class="custom-file-upload">
+                     + Ajouter une photo
+                  </label>
+                  <p>jpg, png : 4mo max</p>
+                  <input type="file" id="image-upload" accept="image/*">
+                  
+                  </div>
+        
+                  <p>Titre</p>
+                  <input type="text"  placeholder="Ajouter votre titre" name="titre" id="titre" />
+                  <p>Catégorie</p>
+                    <select id="category-select">
+                      <option value="" disabled selected>Sélectionner la catégorie...</option>
+                    </select>
+                  </p>
+                </div>
+                  <button id="valider">Valider</button>      
+              
+                </form>
+                 
+            </div>
+               
+            <!-- ***************MODALE************* -->
+
+
+              
       <section id="portfolio">
-        <h2 id="projets">Mes Projets</h2>
+        <div class="edit">
+          <h2 id="projets">Mes Projets</h2>
+          <span id="modifier" style="display: none;">
+            <i class="fa-regular fa-pen-to-square"></i> Modifier</span>
+        </div>
+       
         <div class="filter-part">
-          <button id="tous" class="btn">Tous</button>
-          <button id="objets" class="btn">Objets</button>
-          <button id="appartements" class="btn">Appartements</button>
-          <button id="hotelresto" class="btn">Hotels & Restaurants</button>
         </div>
 
         <div class="gallery"></div>
@@ -95,4 +155,6 @@
     </nav>
   </footer>
   <script src="./index.js"></script>
+  <script src="./admin.js"></script>
+  <script src="./login.js"></script>
 </html>

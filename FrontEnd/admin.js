@@ -1,30 +1,38 @@
-/// Afficher les projets provenant de l'api
+// Fonction pour afficher les projets avec leurs data-id respectifs
+function displayProjects(projectsToShow) {
+  const projectsContainer = document.querySelector(".gallery");
+  projectsContainer.innerHTML = "";
+
+  projectsToShow.forEach((project) => {
+    const img = document.createElement("img");
+    img.src = project.imageUrl;
+    img.alt = project.title;
+
+    const title = document.createElement("figcaption");
+    title.textContent = project.title;
+
+    const projectContainer = document.createElement("figure");
+    projectContainer.dataset.id = project.id; // Ajout de l'attribut data-id
+    projectContainer.appendChild(img);
+    projectContainer.appendChild(title);
+
+    projectsContainer.appendChild(projectContainer);
+  });
+}
+
 fetch("http://localhost:5678/api/works")
-  .then((response) => response.json())
-  .then((data) => {
-    const projects = data;
-    const projectsContainer = document.querySelector(".gallery");
-
-    function displayProjects(projectsToShow) {
-      projectsContainer.innerHTML = "";
-
-      projectsToShow.forEach((project) => {
-        const img = document.createElement("img");
-        img.src = project.imageUrl;
-        img.alt = project.title;
-        img.setAttribute("data-id", project.id); // Ajoutez l'attribut data-id avec l'identifiant de l'image
-
-        const title = document.createElement("figcaption");
-        title.textContent = project.title;
-
-        const projectContainer = document.createElement("figure");
-        projectContainer.appendChild(img);
-        projectContainer.appendChild(title);
-        projectsContainer.appendChild(projectContainer);
-      });
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des projets");
     }
-
-    displayProjects(projects);
+    return response.json();
+  })
+  .then((data) => {
+    projects = data; // Stocker les projets dans la variable projects
+    displayProjects(projects); // Afficher tous les projets initiaux
+  })
+  .catch((error) => {
+    console.error("Erreur lors de la récupération des projets :", error);
   });
 
 //******************************************************************//
