@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Sélectionner le conteneur des boutons de filtre
       const filterContainer = document.querySelector(".filter-part");
 
-      // Ajouter le bouton "Tous" une seule fois
+      // Ajouter le bouton "Tous"
       const allButton = document.createElement("button");
       allButton.classList.add("btn");
       allButton.textContent = "Tous";
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.textContent = category.name;
         button.dataset.categoryId = category.id; // Stocker l'ID de la catégorie dans l'attribut data
 
-        // Ajouter un écouteur d'événements pour filtrer les projets par catégorie
+        // Ajouter un écouteur d'événement pour filtrer les projets par catégorie
         button.addEventListener("click", () => {
           const categoryId = parseInt(button.dataset.categoryId);
           filterAndDisplayProjects(categoryId);
