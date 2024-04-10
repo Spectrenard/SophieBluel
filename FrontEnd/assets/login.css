@@ -14,7 +14,7 @@ header {
   justify-content: space-between;
   margin: 50px 0;
 }
-header a{
+header a {
   text-decoration: none;
 }
 
@@ -112,9 +112,8 @@ footer a {
 }
 
 .error {
-    display: none; /* Par défaut, masquer les messages d'erreur */
-    color: red; /* Couleur rouge pour les messages d'erreur */
-    font-size: 14px; /* Taille de police pour les messages d'erreur */
-    margin-top: 5px; /* Marge en haut des messages d'erreur */
-  }
-  
+  display: none;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
