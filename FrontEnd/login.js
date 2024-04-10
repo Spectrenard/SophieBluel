@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("token", token);
             localStorage.setItem("userId", userId);
 
-            // Rediriger vers homepage.html après la connexion réussie
+            // Rediriger vers index.html après la connexion réussie
             window.location.href = "index.html";
           })
           .catch((error) => {
@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
 
-      // Rediriger vers la page de connexion ou autre
       window.location.href = "index.html";
     });
   }
@@ -83,15 +82,15 @@ document.addEventListener("DOMContentLoaded", function () {
     return /\S+@\S+\.\S+/.test(email);
   }
 
-  // Exécuter cette partie après le chargement de la page
   const editSpan = document.getElementById("modifier");
   const editionModeDiv = document.querySelector(".edition-mode");
   const loginBtn = document.querySelector(".login");
   const filter = document.querySelector(".filter-part");
 
   if (editSpan && editionModeDiv) {
-    // Vérifier si l'utilisateur est connecté (vous pouvez utiliser localStorage pour cela)
+    // Vérifier si l'utilisateur est connecté
     const userId = localStorage.getItem("userId");
+    logoutBtn.style.alignItems = "center";
 
     if (userId) {
       // L'utilisateur est connecté
@@ -101,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
       loginBtn.style.display = "none";
       filter.style.display = "none";
     } else {
-      // L'utilisateur n'est pas connecté, masquer les éléments
-      editSpan.style.display = "none"; // Masquer le span
-      editionModeDiv.style.display = "none"; // Masquer le div
+      // L'utilisateur n'est pas connecté
+      editSpan.style.display = "none";
+      editionModeDiv.style.display = "none";
       logoutBtn.style.display = "none";
       loginBtn.style.display = "flex";
     }
